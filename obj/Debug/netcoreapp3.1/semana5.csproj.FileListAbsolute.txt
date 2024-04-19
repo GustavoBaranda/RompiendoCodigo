@@ -1,0 +1,13 @@
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\bin\Debug\netcoreapp3.1\semana5.exe
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\bin\Debug\netcoreapp3.1\semana5.deps.json
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\bin\Debug\netcoreapp3.1\semana5.runtimeconfig.json
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\bin\Debug\netcoreapp3.1\semana5.runtimeconfig.dev.json
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\bin\Debug\netcoreapp3.1\semana5.dll
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\bin\Debug\netcoreapp3.1\semana5.pdb
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\obj\Debug\netcoreapp3.1\semana5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\obj\Debug\netcoreapp3.1\semana5.AssemblyInfoInputs.cache
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\obj\Debug\netcoreapp3.1\semana5.AssemblyInfo.cs
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\obj\Debug\netcoreapp3.1\semana5.csproj.CoreCompileInputs.cache
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\obj\Debug\netcoreapp3.1\semana5.dll
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\obj\Debug\netcoreapp3.1\semana5.pdb
+C:\Users\ElCat\OneDrive\Escritorio\POO-IFTS\tpIntegrador\semana5\obj\Debug\netcoreapp3.1\semana5.genruntimeconfig.cache
