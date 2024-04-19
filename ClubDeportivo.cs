@@ -62,11 +62,8 @@ namespace semana5
             }
 
             Socio socio = socios.Find(s => s.Id == idSocio);
-            if (socio == null)
-            { 
-                return "SOCIO INEXISTENTE";
-            }
-
+            if (socio == null) return "SOCIO INEXISTENTE";
+            
             if (socio.Actividades.Count >= 3)
             {
                 return "TOPE DE ACTIVIDADES ALCANZADO";
