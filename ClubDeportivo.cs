@@ -95,5 +95,10 @@ namespace semana5
                 Console.WriteLine(actividad);
             }
         }
+
+        internal void AltaSocio(string nombre, int? nroSocio)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
