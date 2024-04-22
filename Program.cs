@@ -6,8 +6,7 @@ namespace semana5
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-    
+            Console.ForegroundColor = ConsoleColor.Red;    
             ClubDeportivo club = new ClubDeportivo();
             club.AltaSocio("Gustavo", "1234");
             club.AltaSocio("Eugenia", "4321");
@@ -36,47 +35,17 @@ namespace semana5
                 {
                     case "1":
                         // Registrar un nuevo socio
-                        RegistrarNuevoSocio();
-                        Console.Clear();
-                        Console.WriteLine("\n+----------------- Alta de socios ------------------+");
-                        Console.Write("  Ingrese el nombre del socio: ");
-                        string nombreSocio = Console.ReadLine();
-                        Console.Write("  Ingrese el ID del socio: ");
-                        string idSocio = Console.ReadLine();
-                        club.AltaSocio(nombreSocio, idSocio);
+                        RegistrarNuevoSocio(club);                      
                         break;
 
                     case "2":
-                        //Agregar una nueva actividad deportiva
-                        
-                        Console.Clear();
-                        Console.WriteLine(" +------------- Actividades registradas -------------+");
-                        club.MostrarActividades();
-                        Console.WriteLine("\n +---------------------------------------------------+ \n");
-                        Console.Write("  Ingrese nueva actividad a resgistrar: ");
-                        string nombreActividad = Console.ReadLine();
-                        Console.Write("  Ingrese cupos disponibles: ");
-                        int cuposDisponibles;
-                        while (!int.TryParse(Console.ReadLine(), out cuposDisponibles) || cuposDisponibles <= 0)
-                        {
-                            Console.WriteLine("  Ingrese un número válido mayor que cero para los cupos disponibles.");
-                            Console.Write("  Ingrese los cupos disponibles para la actividad: ");
-                        }
-                        ActividadDeportiva nuevaActividad = new ActividadDeportiva(nombreActividad, cuposDisponibles);
-                        club.AgregarActividad(nuevaActividad);
+                        //Agregar una nueva actividad deportiva                        
+                        AgregarNuevaActividad(club);
                         break;
 
                     case "3":
                         // Inscribir a un socio en una actividad
-                        Console.Clear();
-                        Console.WriteLine(" +--------------- Oferta de actividades -------------+");
-                        club.MostrarCupos();
-                        Console.WriteLine(" +---------------------------------------------------+\n");
-                        Console.Write("  Elija actividad deseada: ");
-                        string nombreAct = Console.ReadLine();
-                        Console.Write("  Ingrese el ID del socio: ");
-                        string idSoc = Console.ReadLine();
-                        Console.WriteLine(club.InscribirActividad(nombreAct, idSoc));
+                        InscribirSocioActividad(club);
                         break;
 
                     case "4":
@@ -95,19 +64,56 @@ namespace semana5
             Console.WriteLine(" |              Programa finalizado.                 |");
             Console.WriteLine(" +---------------------------------------------------+");
 
+
         }
-    static void MostrarMenu()
-    {
-        Console.WriteLine("\n+---------------- Menú de opciones -----------------+");
-        Console.WriteLine("|   1. Registrar nuevo socio                        |");
-        Console.WriteLine("|   2. Agregar nueva actividad deportiva            |");
-        Console.WriteLine("|   3. Inscribir socio a una actividad              |");
-        Console.WriteLine("|   4. Salir                                        |");
-        Console.WriteLine("+---------------------------------------------------+");
-    }
-     static void RegistrarNuevoSocio()
-    {
-      
-    }
+        static void MostrarMenu()
+        {
+            Console.WriteLine("\n+---------------- Menú de opciones -----------------+");
+            Console.WriteLine("|   1. Registrar nuevo socio                        |");
+            Console.WriteLine("|   2. Agregar nueva actividad deportiva            |");
+            Console.WriteLine("|   3. Inscribir socio a una actividad              |");
+            Console.WriteLine("|   4. Salir                                        |");
+            Console.WriteLine("+---------------------------------------------------+");
+        }
+        static void RegistrarNuevoSocio(ClubDeportivo club)
+        {
+            Console.Clear();
+            Console.WriteLine("\n+----------------- Alta de socios ------------------+");
+            Console.Write("  Ingrese el nombre del socio: ");
+            string nombreSocio = Console.ReadLine();
+            Console.Write("  Ingrese el ID del socio: ");
+            string idSocio = Console.ReadLine();
+            club.AltaSocio(nombreSocio, idSocio);
+        }
+        static void AgregarNuevaActividad(ClubDeportivo club)
+        {
+            Console.Clear();
+            Console.WriteLine(" +------------- Actividades registradas -------------+");
+            club.MostrarActividades();
+            Console.WriteLine("\n +---------------------------------------------------+ \n");
+            Console.Write("  Ingrese nueva actividad a resgistrar: ");
+            string nombreActividad = Console.ReadLine();
+            Console.Write("  Ingrese cupos disponibles: ");
+            int cuposDisponibles;
+            while (!int.TryParse(Console.ReadLine(), out cuposDisponibles) || cuposDisponibles <= 0)
+            {
+                Console.WriteLine("  Ingrese un número válido mayor que cero para los cupos disponibles.");
+                Console.Write("  Ingrese los cupos disponibles para la actividad: ");
+            }
+            ActividadDeportiva nuevaActividad = new ActividadDeportiva(nombreActividad, cuposDisponibles);
+            club.AgregarActividad(nuevaActividad);
+        }
+        static void InscribirSocioActividad(ClubDeportivo club)
+        {
+            Console.Clear();
+            Console.WriteLine(" +--------------- Oferta de actividades -------------+");
+            club.MostrarCupos();
+            Console.WriteLine(" +---------------------------------------------------+\n");
+            Console.Write("  Elija actividad deseada: ");
+            string nombreAct = Console.ReadLine();
+            Console.Write("  Ingrese el ID del socio: ");
+            string idSoc = Console.ReadLine();
+            Console.WriteLine(club.InscribirActividad(nombreAct, idSoc));
+        }  
     }
 }
