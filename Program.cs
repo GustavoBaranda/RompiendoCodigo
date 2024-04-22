@@ -12,7 +12,8 @@ namespace semana5
      // Ciclo principal para solicitar datos
      bool continuar = true;
      while (continuar)
-     {               
+     {   
+         Console.Clear();            
          Console.WriteLine("\n+---------------- Menú de opciones -----------------+");
          Console.WriteLine("|   1. Registrar nuevo socio                        |");
          Console.WriteLine("|   2. Agregar nueva actividad deportiva            |");
