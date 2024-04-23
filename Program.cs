@@ -22,7 +22,6 @@ namespace semana5
             Console.WriteLine(club.InscribirActividad("Fútbol", "00000"));  // Debería mostrar "SOCIO INEXISTENTE"
             club.MostrarCupos("Fútbol");
             club.MostrarCupos();
-
         }
     }
 }
