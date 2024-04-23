@@ -6,7 +6,7 @@ namespace semana5
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Red;    
+            Console.ForegroundColor = ConsoleColor.Gray;    
             ClubDeportivo club = new ClubDeportivo();
             club.AltaSocio("Gustavo", "1234");
             club.AltaSocio("Eugenia", "4321");
@@ -29,7 +29,8 @@ namespace semana5
             while (continuar)
             {             
                 MostrarMenu();
-                Console.Write("Ingrese la opción que desea realizar: ");
+                Console.ForegroundColor = ConsoleColor.Green;  
+                Console.Write("\n Ingrese la opción que desea realizar: ");
                 string opcion = Console.ReadLine();
                 switch (opcion)
                 {
@@ -60,25 +61,27 @@ namespace semana5
                 }
             }
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine(" +---------------------------------------------------+");
             Console.WriteLine(" |              Programa finalizado.                 |");
             Console.WriteLine(" +---------------------------------------------------+");
-
-
         }
         static void MostrarMenu()
         {
-            Console.WriteLine("\n+---------------- Menú de opciones -----------------+");
-            Console.WriteLine("|   1. Registrar nuevo socio                        |");
-            Console.WriteLine("|   2. Agregar nueva actividad deportiva            |");
-            Console.WriteLine("|   3. Inscribir socio a una actividad              |");
-            Console.WriteLine("|   4. Salir                                        |");
-            Console.WriteLine("+---------------------------------------------------+");
+            Console.ForegroundColor = ConsoleColor.Gray;  
+            Console.WriteLine("\n +---------------- Menú de opciones -----------------+");
+            Console.WriteLine(" |   1. Registrar nuevo socio                        |");
+            Console.WriteLine(" |   2. Agregar nueva actividad deportiva            |");
+            Console.WriteLine(" |   3. Inscribir socio a una actividad              |");
+            Console.WriteLine(" |   4. Salir                                        |");
+            Console.WriteLine(" +---------------------------------------------------+");
         }
         static void RegistrarNuevoSocio(ClubDeportivo club)
         {
             Console.Clear();
-            Console.WriteLine("\n+----------------- Alta de socios ------------------+");
+            Console.ForegroundColor = ConsoleColor.Gray;  
+            Console.WriteLine("\n +----------------- Alta de socios ------------------+");
+            Console.ForegroundColor = ConsoleColor.Green;  
             Console.Write("  Ingrese el nombre del socio: ");
             string nombreSocio = Console.ReadLine();
             Console.Write("  Ingrese el ID del socio: ");
@@ -88,9 +91,13 @@ namespace semana5
         static void AgregarNuevaActividad(ClubDeportivo club)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine(" +------------- Actividades registradas -------------+");
+            Console.ForegroundColor = ConsoleColor.Green;  
             club.MostrarActividades();
+            Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine("\n +---------------------------------------------------+ \n");
+            Console.ForegroundColor = ConsoleColor.Gray;  
             Console.Write("  Ingrese nueva actividad a resgistrar: ");
             string nombreActividad = Console.ReadLine();
             Console.Write("  Ingrese cupos disponibles: ");
@@ -106,9 +113,13 @@ namespace semana5
         static void InscribirSocioActividad(ClubDeportivo club)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine(" +--------------- Oferta de actividades -------------+");
+            Console.ForegroundColor = ConsoleColor.Green;  
             club.MostrarCupos();
+            Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine(" +---------------------------------------------------+\n");
+            Console.ForegroundColor = ConsoleColor.Green;  
             Console.Write("  Elija actividad deseada: ");
             string nombreAct = Console.ReadLine();
             Console.Write("  Ingrese el ID del socio: ");
