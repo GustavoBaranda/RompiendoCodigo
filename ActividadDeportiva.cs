@@ -25,7 +25,7 @@ namespace semana5
 
         public override string ToString()
         {
-            string mensaje = $"La actividad {nombre} ";
+            string mensaje = $"  La actividad {nombre} ";
             mensaje += cuposDisponibles == 0 ?
                 "no tiene cupos disponibles." 
                 :

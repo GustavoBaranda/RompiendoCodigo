@@ -19,32 +19,32 @@ namespace semana5
         {
             if (actividad == null)
             {
-                Console.WriteLine("No se puede agregar una actividad nula.");
+                Console.WriteLine("  No se puede agregar una actividad nula.");
                 return;
             }
 
             // Verificar si ya existe una actividad con el mismo nombre
             if (actividades.Exists(a => a.Nombre == actividad.Nombre))
             {
-                Console.WriteLine($"Ya existe una actividad con el nombre '{actividad.Nombre}'.");
+                Console.WriteLine($"  Ya existe una actividad con el nombre '{actividad.Nombre}'.");
                 return;
             }
 
             actividades.Add(actividad);
-            Console.WriteLine($"Actividad '{actividad.Nombre}' agregada correctamente.");
+            Console.WriteLine($"  Actividad '{actividad.Nombre}' agregada correctamente.");
         }
 
         public void AltaSocio(string nombre, string id)
         {
             if (socios.Exists(s => s.Id == id))
             {
-                Console.WriteLine("El socio ya está registrado.");
+                Console.WriteLine("  El socio ya está registrado.");
                 return;
             }
 
             Socio nuevoSocio = new Socio(nombre, id);
             socios.Add(nuevoSocio);
-            Console.WriteLine("Socio registrado correctamente.");
+            Console.WriteLine("  Socio registrado correctamente.");
         }
 
         public string InscribirActividad(string nombreActividad, string idSocio)
@@ -53,28 +53,28 @@ namespace semana5
             ActividadDeportiva actividad = actividades.Find(a => a.Nombre == nombreActividad);
             if (actividad == null)
             {
-                return "ACTIVIDAD INEXISTENTE";
+                return "  ACTIVIDAD INEXISTENTE";
             }
 
             if (actividad.CuposDisponibles <= 0)
             {
-                return "Cupos agotados para esta actividad.";
+                return "  CUPOS AGOTADOS PARA ESTA ACTIVIDAD";
             }
 
             Socio socio = socios.Find(s => s.Id == idSocio);
             if (socio == null)
             {
-                 return "SOCIO INEXISTENTE";
+                 return "  SOCIO INEXISTENTE";
             }
             
             if (socio.Actividades.Count >= 3)
             {
-                return "TOPE DE ACTIVIDADES ALCANZADO";
+                return "  TOPE DE ACTIVIDADES ALCANZADO";
             }
 
             socio.InscribirActividad(actividad);
             actividad.DecrementarCupo();
-            return "INSCRIPCIÓN EXITOSA";
+            return "  INSCRIPCIÓN EXITOSA";
         }
         
         public void MostrarCupos(string nombreActividad)
@@ -82,7 +82,7 @@ namespace semana5
             ActividadDeportiva actividad = actividades.Find(actividad => actividad.Nombre == nombreActividad);
             if(actividad == null)
             {
-                Console.WriteLine("No existe una actividad con ese nombre");
+                Console.WriteLine("  No existe una actividad con ese nombre");
             } else
             {
                 Console.WriteLine(actividad);
@@ -93,6 +93,14 @@ namespace semana5
             foreach(var actividad in actividades)
             {
                 Console.WriteLine(actividad);
+            }
+        }
+
+         public void MostrarActividades()
+        {
+            foreach(var actividad in actividades)
+            {
+                Console.Write(new string(' ', 2)+ actividad.Nombre);
             }
         }
     }
