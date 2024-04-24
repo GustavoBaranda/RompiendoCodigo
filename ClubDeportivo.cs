@@ -34,15 +34,15 @@ namespace semana5
             Console.WriteLine($"  Actividad '{actividad.Nombre}' agregada correctamente.");
         }
 
-        public void AltaSocio(string nombre, string id)
+        public void AltaSocio(string nombre, string dniSocio)
         {
-            if (socios.Exists(s => s.Id == id))
+            if (socios.Exists(s => s.DniSocio == dniSocio))
             {
                 Console.WriteLine("  El socio ya está registrado.");
                 return;
             }
 
-            Socio nuevoSocio = new Socio(nombre, id);
+            Socio nuevoSocio = new Socio(nombre, dniSocio);
             socios.Add(nuevoSocio);
             Console.WriteLine("  Socio registrado correctamente.");
         }
@@ -61,7 +61,7 @@ namespace semana5
                 return "  CUPOS AGOTADOS PARA ESTA ACTIVIDAD";
             }
 
-            Socio socio = socios.Find(s => s.Id == idSocio);
+            Socio socio = socios.Find(s => s.DniSocio == idSocio);
             if (socio == null)
             {
                  return "  SOCIO INEXISTENTE";
@@ -102,6 +102,13 @@ namespace semana5
             {
                 Console.Write(new string(' ', 2)+ actividad.Nombre);
             }
+        }
+        public void ListarSocios()
+        {
+            foreach (var nuevoSocio in socios)
+            
+                Console.WriteLine(nuevoSocio);
+
         }
     }
 }

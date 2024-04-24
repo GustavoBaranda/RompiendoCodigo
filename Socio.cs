@@ -7,23 +7,27 @@ namespace semana5
     internal class Socio
     {
         private string nombre;
-        private string id;
+        private string dniSocio;
         private List<ActividadDeportiva> actividades;
 
-        public Socio(string nombre, string id)
+        public Socio(string nombre, string dniSocio)
         {
             this.nombre = nombre;
-            this.id = id;
+            this.dniSocio = dniSocio;
             actividades = new List<ActividadDeportiva>();
         }
 
         public string Nombre { get => nombre; }
-        public string Id { get => id; }
+        public string DniSocio { get => dniSocio; }
         public List<ActividadDeportiva> Actividades { get => actividades; }
 
         public void InscribirActividad(ActividadDeportiva actividad)
         {
             actividades.Add(actividad);
+        }
+        public override string ToString()
+        {
+        return "  Socio "+ dniSocio + ": " + nombre;
         }
     }
 }
