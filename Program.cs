@@ -18,10 +18,10 @@ namespace semana5
             club.AgregarActividad(voley);
             club.AgregarActividad(tenis);
             club.AgregarActividad(basquet);
-            club.InscribirActividad("Futbol", "1234");
-            club.InscribirActividad("Voley", "1234");
-            club.InscribirActividad("Tenis", "1234");
-            club.InscribirActividad("Tenis", "4321");
+            club.InscribirActividad("Futbol", "30123123");
+            club.InscribirActividad("Voley", "30123123");
+            club.InscribirActividad("Tenis", "30123123");
+            club.InscribirActividad("Tenis", "22200000");
             Console.Clear();
             
             // Ciclo principal para solicitar datos
@@ -88,11 +88,38 @@ namespace semana5
             Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine("\n +----------------- Alta de socios ------------------+");
             Console.ForegroundColor = ConsoleColor.Green;  
-            Console.Write("  Ingrese el nombre del socio: ");
-            string nombreSocio = Console.ReadLine();
-            Console.Write("  Ingrese el ID del socio: ");
-            string idSocio = Console.ReadLine();
+            string nombreSocio;
+            while (true)
+            {
+                Console.Write("  Ingrese el nombre del socio: ");
+                nombreSocio = Console.ReadLine().Trim();  
+
+                if (!string.IsNullOrEmpty(nombreSocio)) 
+                {
+                    break;  
+                }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  El nombre no puede estar vacío. Intente nuevamente.");
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            string idSocio;
+            while (true)
+            {
+                Console.Write("  Ingrese el ID del socio: ");
+                idSocio = Console.ReadLine().Trim();
+
+                if (!string.IsNullOrEmpty(idSocio))
+                {
+                    break;
+                }
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  El ID no puede estar vacío. Intente nuevamente.");
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+
             club.AltaSocio(nombreSocio, idSocio);
+                
         }
         static void AgregarNuevaActividad(ClubDeportivo club)
         {
@@ -103,14 +130,16 @@ namespace semana5
             club.MostrarActividades();
             Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine("\n +---------------------------------------------------+ \n");
-            Console.ForegroundColor = ConsoleColor.Gray;  
+            Console.ForegroundColor = ConsoleColor.Green;  
             Console.Write("  Ingrese nueva actividad a resgistrar: ");
             string nombreActividad = Console.ReadLine();
             Console.Write("  Ingrese cupos disponibles: ");
             int cuposDisponibles;
             while (!int.TryParse(Console.ReadLine(), out cuposDisponibles) || cuposDisponibles <= 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("  Ingrese un número válido mayor que cero para los cupos disponibles.");
+                Console.ForegroundColor = ConsoleColor.Green;  
                 Console.Write("  Ingrese los cupos disponibles para la actividad: ");
             }
             ActividadDeportiva nuevaActividad = new ActividadDeportiva(nombreActividad, cuposDisponibles);

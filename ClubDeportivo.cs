@@ -24,7 +24,7 @@ namespace semana5
             }
 
             // Verificar si ya existe una actividad con el mismo nombre
-            if (actividades.Exists(a => a.Nombre == actividad.Nombre))
+            if (actividades.Exists(a => a.Nombre.ToLower() == actividad.Nombre.ToLower()))
             {
                 Console.WriteLine($"  Ya existe una actividad con el nombre '{actividad.Nombre}'.");
                 return;
@@ -50,7 +50,7 @@ namespace semana5
         public string InscribirActividad(string nombreActividad, string idSocio)
         {
             
-            ActividadDeportiva actividad = actividades.Find(a => a.Nombre == nombreActividad);
+            ActividadDeportiva actividad = actividades.Find(a => a.Nombre.ToLower() == nombreActividad.ToLower());
             if (actividad == null)
             {
                 return "  ACTIVIDAD INEXISTENTE";
