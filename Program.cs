@@ -50,14 +50,8 @@ namespace semana5
                         break;
                         
                     case "4":
-                        // Inscribir a un socio en una actividad
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine("\n +---------------- Lista de socios ------------------+");
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        club.ListarSocios();
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine(" +---------------------------------------------------+");
+                        // Listado de socios registrados
+                        MostrarListaDeSocios(club);
                         break;
 
                     case "5":
@@ -66,11 +60,7 @@ namespace semana5
                         break;
 
                     default:
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine(" +---------------------------------------------------+");
-                        Console.WriteLine(" |       Opción no válida. Intente nuevamente.       |");
-                        Console.WriteLine(" +---------------------------------------------------+");
+                        MostrarMensajeOpcionInvalida();
                         break;
                 }
             }
@@ -210,6 +200,26 @@ namespace semana5
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
             }
             Console.WriteLine(club.InscribirActividad(nombreAct, idSoc));
+        }
+
+        static void MostrarListaDeSocios(ClubDeportivo club)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("\n +---------------- Lista de socios ------------------+");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            club.ListarSocios();
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(" +---------------------------------------------------+");
+        }
+
+        static void MostrarMensajeOpcionInvalida()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(" +---------------------------------------------------+");
+            Console.WriteLine(" |       Opción no válida. Intente nuevamente.       |");
+            Console.WriteLine(" +---------------------------------------------------+");
         }  
     }
 }
