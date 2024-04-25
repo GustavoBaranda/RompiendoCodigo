@@ -19,6 +19,7 @@ namespace semana5
         {
             if (actividad == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("  No se puede agregar una actividad nula.");
                 return;
             }
@@ -26,11 +27,13 @@ namespace semana5
             // Verificar si ya existe una actividad con el mismo nombre
             if (actividades.Exists(a => a.Nombre.ToLower() == actividad.Nombre.ToLower()))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"  Ya existe una actividad con el nombre '{actividad.Nombre}'.");
                 return;
             }
 
             actividades.Add(actividad);
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"  Actividad '{actividad.Nombre}' agregada correctamente.");
         }
 
@@ -38,12 +41,14 @@ namespace semana5
         {
             if (socios.Exists(s => s.DniSocio == dniSocio))
             {
-                Console.WriteLine("  El socio ya está registrado.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  EL SOCIO SE ENCUENTRA REGISTRADO.");
                 return;
             }
 
             Socio nuevoSocio = new Socio(nombre, dniSocio);
             socios.Add(nuevoSocio);
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("  Socio registrado correctamente.");
         }
 
@@ -53,27 +58,32 @@ namespace semana5
             ActividadDeportiva actividad = actividades.Find(a => a.Nombre.ToLower() == nombreActividad.ToLower());
             if (actividad == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 return "  ACTIVIDAD INEXISTENTE";
             }
 
             if (actividad.CuposDisponibles <= 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 return "  CUPOS AGOTADOS PARA ESTA ACTIVIDAD";
             }
 
             Socio socio = socios.Find(s => s.DniSocio == idSocio);
             if (socio == null)
             {
-                 return "  SOCIO INEXISTENTE";
+                Console.ForegroundColor = ConsoleColor.Red;
+                return "  SOCIO INEXISTENTE";
             }
             
             if (socio.Actividades.Count >= 3)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 return "  TOPE DE ACTIVIDADES ALCANZADO";
             }
 
             socio.InscribirActividad(actividad);
             actividad.DecrementarCupo();
+            Console.ForegroundColor = ConsoleColor.Green;
             return "  INSCRIPCIÓN EXITOSA";
         }
         
@@ -82,7 +92,8 @@ namespace semana5
             ActividadDeportiva actividad = actividades.Find(actividad => actividad.Nombre == nombreActividad);
             if(actividad == null)
             {
-                Console.WriteLine("  No existe una actividad con ese nombre");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  NO EXISTE UNA ACTIVIDAD CON ESE NOMBRE");
             } else
             {
                 Console.WriteLine(actividad);
@@ -105,10 +116,8 @@ namespace semana5
         }
         public void ListarSocios()
         {
-            foreach (var nuevoSocio in socios)
-            
+            foreach (var nuevoSocio in socios)            
                 Console.WriteLine(nuevoSocio);
-
         }
     }
 }

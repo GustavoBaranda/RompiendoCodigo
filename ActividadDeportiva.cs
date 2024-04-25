@@ -26,10 +26,16 @@ namespace semana5
         public override string ToString()
         {
             string mensaje = $"  La actividad {nombre} ";
-            mensaje += cuposDisponibles == 0 ?
-                "no tiene cupos disponibles." 
-                :
-                $"tiene {cuposDisponibles} cupos disponibles.";
+            if (cuposDisponibles == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                mensaje += "no tiene cupos disponibles."; 
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                mensaje += $"tiene {cuposDisponibles} cupos disponibles.";
+            }
             return mensaje;
         }
     }

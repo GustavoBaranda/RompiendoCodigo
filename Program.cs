@@ -29,7 +29,7 @@ namespace semana5
             while (continuar)
             {             
                 MostrarMenu();
-                Console.ForegroundColor = ConsoleColor.Green;  
+                Console.ForegroundColor = ConsoleColor.DarkYellow;  
                 Console.Write("\n Ingrese la opción que desea realizar: ");
                 string opcion = Console.ReadLine();
                 switch (opcion)
@@ -51,7 +51,13 @@ namespace semana5
                         
                     case "4":
                         // Inscribir a un socio en una actividad
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine("\n +---------------- Lista de socios ------------------+");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         club.ListarSocios();
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine(" +---------------------------------------------------+");
                         break;
 
                     case "5":
@@ -61,7 +67,10 @@ namespace semana5
 
                     default:
                         Console.Clear();
-                        Console.WriteLine("\n  Opción no válida. Intente nuevamente.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(" +---------------------------------------------------+");
+                        Console.WriteLine(" |       Opción no válida. Intente nuevamente.       |");
+                        Console.WriteLine(" +---------------------------------------------------+");
                         break;
                 }
             }
@@ -87,7 +96,7 @@ namespace semana5
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine("\n +----------------- Alta de socios ------------------+");
-            Console.ForegroundColor = ConsoleColor.Green;  
+            Console.ForegroundColor = ConsoleColor.DarkYellow;  
             string nombreSocio;
             while (true)
             {
@@ -100,12 +109,12 @@ namespace semana5
                 }
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("  El nombre no puede estar vacío. Intente nuevamente.");
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
             }
             string idSocio;
             while (true)
             {
-                Console.Write("  Ingrese el ID del socio: ");
+                Console.Write("  Ingrese el DNI del socio: ");
                 idSocio = Console.ReadLine().Trim();
 
                 if (!string.IsNullOrEmpty(idSocio))
@@ -114,8 +123,8 @@ namespace semana5
                 }
 
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("  El ID no puede estar vacío. Intente nuevamente.");
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("  El DNI no puede estar vacío. Intente nuevamente.");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
             }
 
             club.AltaSocio(nombreSocio, idSocio);
@@ -126,20 +135,34 @@ namespace semana5
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine(" +------------- Actividades registradas -------------+");
-            Console.ForegroundColor = ConsoleColor.Green;  
+            Console.ForegroundColor = ConsoleColor.DarkYellow;  
             club.MostrarActividades();
             Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine("\n +---------------------------------------------------+ \n");
-            Console.ForegroundColor = ConsoleColor.Green;  
-            Console.Write("  Ingrese nueva actividad a resgistrar: ");
-            string nombreActividad = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.DarkYellow; 
+
+            string nombreActividad;
+            while (true)
+            {
+                Console.Write("  Ingrese nueva actividad a resgistrar: ");
+                nombreActividad = Console.ReadLine().Trim();  
+
+                if (!string.IsNullOrEmpty(nombreActividad)) 
+                {
+                    break;  
+                }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  La actividad no puede estar vacío. Intente nuevamente.");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
+
             Console.Write("  Ingrese cupos disponibles: ");
             int cuposDisponibles;
             while (!int.TryParse(Console.ReadLine(), out cuposDisponibles) || cuposDisponibles <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("  Ingrese un número válido mayor que cero para los cupos disponibles.");
-                Console.ForegroundColor = ConsoleColor.Green;  
+                Console.ForegroundColor = ConsoleColor.DarkYellow;  
                 Console.Write("  Ingrese los cupos disponibles para la actividad: ");
             }
             ActividadDeportiva nuevaActividad = new ActividadDeportiva(nombreActividad, cuposDisponibles);
@@ -150,15 +173,42 @@ namespace semana5
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine(" +--------------- Oferta de actividades -------------+");
-            Console.ForegroundColor = ConsoleColor.Green;  
+            Console.ForegroundColor = ConsoleColor.DarkYellow;  
             club.MostrarCupos();
             Console.ForegroundColor = ConsoleColor.Gray;  
             Console.WriteLine(" +---------------------------------------------------+\n");
-            Console.ForegroundColor = ConsoleColor.Green;  
-            Console.Write("  Elija actividad deseada: ");
-            string nombreAct = Console.ReadLine();
-            Console.Write("  Ingrese el ID del socio: ");
-            string idSoc = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;  
+       
+            string nombreAct;
+            while (true)
+            {
+                Console.Write("  Ingrese nueva actividad a resgistrar: ");
+                nombreAct = Console.ReadLine().Trim();  
+
+                if (!string.IsNullOrEmpty(nombreAct)) 
+                {
+                    break;  
+                }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  La actividad no puede estar vacío. Intente nuevamente.");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
+
+            string idSoc;
+            while (true)
+            {
+                Console.Write("  Ingrese el DNI del socio: ");
+                idSoc = Console.ReadLine().Trim();
+
+                if (!string.IsNullOrEmpty(idSoc))
+                {
+                    break;
+                }
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  El DNI no puede estar vacío. Intente nuevamente.");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
             Console.WriteLine(club.InscribirActividad(nombreAct, idSoc));
         }  
     }
