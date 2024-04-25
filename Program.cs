@@ -69,6 +69,7 @@ namespace semana5
             Console.WriteLine(" +---------------------------------------------------+");
             Console.WriteLine(" |              Programa finalizado.                 |");
             Console.WriteLine(" +---------------------------------------------------+");
+            Console.ReadKey();
         }
         static void MostrarMenu()
         {
