@@ -2,32 +2,41 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace semana5
+namespace TP_ClubDeportivo
 {
     internal class Socio
     {
         private string nombre;
-        private string dniSocio;
-        private List<ActividadDeportiva> actividades;
+        private int id;
+        private int cantActividades;
+        private const int TOPE_ACTIVIDADES = 3;
+        private List<Actividad> actividadList;
 
-        public Socio(string nombre, string dniSocio)
+        public Socio(string nombre)
         {
-            this.nombre = nombre;
-            this.dniSocio = dniSocio;
-            actividades = new List<ActividadDeportiva>();
+            this.Nombre = nombre;
         }
 
-        public string Nombre { get => nombre; }
-        public string DniSocio { get => dniSocio; }
-        public List<ActividadDeportiva> Actividades { get => actividades; }
-
-        public void InscribirActividad(ActividadDeportiva actividad)
+        public Socio(string nombre, int id)
         {
-            actividades.Add(actividad);
+            this.Nombre = nombre;
+            this.Id = id;
+            actividadList = new List<Actividad>();
+        }
+
+        public int GetTOPE_ACTIVIDADES() { return TOPE_ACTIVIDADES; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public int Id { get => id; set => id = value; }
+        public int CantActividades { get => cantActividades; set => cantActividades = value; }
+        public List<Actividad> actividades { get => actividadList; }
+
+        public void inscribirActividad(Actividad actividad)
+        {
+            actividadList.Add(actividad);
         }
         public override string ToString()
         {
-        return "  Socio "+ dniSocio + ": " + nombre;
+            return $"Se registro exitosamente a {nombre} con id nº {id}";
         }
     }
 }

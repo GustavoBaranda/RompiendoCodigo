@@ -2,113 +2,115 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace semana5
+namespace TP_ClubDeportivo
 {
     internal class ClubDeportivo
     {
         private List<Socio> socios;
-        private List<ActividadDeportiva> actividades;
+        private List<Actividad> actividades;
+        private int siguienteId = 0;
 
         public ClubDeportivo()
         {
-            socios = new List<Socio>();
-            actividades = new List<ActividadDeportiva>();
+            this.socios = new List<Socio>();
+            this.actividades = new List<Actividad>();
         }
 
-        public void AgregarActividad(ActividadDeportiva actividad)
+        private Socio buscarSocio(string nombreSocio)
         {
+            Socio socioBuscado = null;
+            int i = 0;
+            while (i < socios.Count && !socios[i].Nombre.Equals(nombreSocio))
+                i++;
+            if (i != socios.Count)
+                socioBuscado = socios[i];
+            return socioBuscado;
+        }
+
+        private Socio buscarSocio(int id)
+        {
+            Socio socioBuscado = null;
+            int i = 0;
+            while (i < socios.Count && !socios[i].Id.Equals(id))
+                i++;
+            if (i != socios.Count)
+                socioBuscado = socios[i];
+            return socioBuscado;
+        }
+
+        public void altaSocio(string nombre)
+        {
+
+            string resultado = $"El socio {nombre} ya existe!";
+            Socio socioNuevo;
+            socioNuevo = buscarSocio(nombre);
+            if (socioNuevo == null)
+            {
+                siguienteId++;
+                socioNuevo = new Socio(nombre, siguienteId);
+                socios.Add(socioNuevo);
+                resultado = socioNuevo.ToString();
+
+            }
+            Console.WriteLine(resultado);
+
+        }
+
+        private Actividad buscarActividad(string nombreActividad)
+        {
+            Actividad actividadBuscada = null;
+            int i = 0;
+            while (i < actividades.Count && !actividades[i].Nombre.Equals(nombreActividad))
+                i++;
+            if (i != actividades.Count)
+                actividadBuscada = actividades[i];
+            return actividadBuscada;
+        }
+
+        public bool altaActividad(string nombre, int cupo)
+        {
+            bool resultado = false;
+            Actividad actividadNueva;
+            actividadNueva = buscarActividad(nombre);
+            if (actividadNueva == null)
+            {
+                actividadNueva = new Actividad(nombre, cupo);
+                actividades.Add(actividadNueva);
+                resultado = true;
+            }
+
+            return resultado;
+        }
+
+        public string inscribirActividad(string nombreActividad, int idSocio)
+        {
+
+            Actividad actividad = buscarActividad(nombreActividad);
+            Socio socio = buscarSocio(idSocio);
             if (actividad == null)
             {
-                Console.WriteLine("  No se puede agregar una actividad nula.");
-                return;
+                return "ACTIVIDAD INEXISTENTE";
             }
-
-            // Verificar si ya existe una actividad con el mismo nombre
-            if (actividades.Exists(a => a.Nombre.ToLower() == actividad.Nombre.ToLower()))
-            {
-                Console.WriteLine($"  Ya existe una actividad con el nombre '{actividad.Nombre}'.");
-                return;
-            }
-
-            actividades.Add(actividad);
-            Console.WriteLine($"  Actividad '{actividad.Nombre}' agregada correctamente.");
-        }
-
-        public void AltaSocio(string nombre, string dniSocio)
-        {
-            if (socios.Exists(s => s.DniSocio == dniSocio))
-            {
-                Console.WriteLine("  El socio ya está registrado.");
-                return;
-            }
-
-            Socio nuevoSocio = new Socio(nombre, dniSocio);
-            socios.Add(nuevoSocio);
-            Console.WriteLine("  Socio registrado correctamente.");
-        }
-
-        public string InscribirActividad(string nombreActividad, string idSocio)
-        {
-            
-            ActividadDeportiva actividad = actividades.Find(a => a.Nombre.ToLower() == nombreActividad.ToLower());
-            if (actividad == null)
-            {
-                return "  ACTIVIDAD INEXISTENTE";
-            }
-
-            if (actividad.CuposDisponibles <= 0)
-            {
-                return "  CUPOS AGOTADOS PARA ESTA ACTIVIDAD";
-            }
-
-            Socio socio = socios.Find(s => s.DniSocio == idSocio);
             if (socio == null)
             {
-                 return "  SOCIO INEXISTENTE";
+                return "SOCIO INEXISTENTE";
             }
-            
-            if (socio.Actividades.Count >= 3)
+            if (socio.CantActividades == socio.GetTOPE_ACTIVIDADES())
             {
-                return "  TOPE DE ACTIVIDADES ALCANZADO";
+                return "TOPE DE ACTIVIDADES ALCANZADO";
             }
-
-            socio.InscribirActividad(actividad);
-            actividad.DecrementarCupo();
-            return "  INSCRIPCIÓN EXITOSA";
-        }
-        
-        public void MostrarCupos(string nombreActividad)
-        {
-            ActividadDeportiva actividad = actividades.Find(actividad => actividad.Nombre == nombreActividad);
-            if(actividad == null)
+            if (actividad.Cupo == 0)
             {
-                Console.WriteLine("  No existe una actividad con ese nombre");
-            } else
-            {
-                Console.WriteLine(actividad);
+                return "LA ACTIVIDAD ALCANZO SU LIMITE MÁXIMO";
             }
-        }
-        public void MostrarCupos()
-        {
-            foreach(var actividad in actividades)
+            if (socio.actividades.Exists(a => a.Nombre == actividad.Nombre))
             {
-                Console.WriteLine(actividad);
+                return $"YA SE ANOTO A {actividad.Nombre} EL CLIENTE";
             }
-        }
-
-         public void MostrarActividades()
-        {
-            foreach(var actividad in actividades)
-            {
-                Console.Write(new string(' ', 2)+ actividad.Nombre);
-            }
-        }
-        public void ListarSocios()
-        {
-            foreach (var nuevoSocio in socios)
-            
-                Console.WriteLine(nuevoSocio);
-
+            socio.inscribirActividad(actividad);
+            socio.CantActividades += 1;
+            actividad.Cupo -= 1;
+            return "INSCRIPCIÓN EXITOSA";
         }
     }
 }
