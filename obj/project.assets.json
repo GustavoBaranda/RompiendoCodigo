@@ -14,11 +14,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Marcelo\\Downloads\\7-Desarrollo de software orientada a objetos\\5-COLECCIONES\\TP ClubDeportivo\\TP ClubDeportivo.csproj",
       "projectName": "TP ClubDeportivo",
       "projectPath": "C:\\Users\\Marcelo\\Downloads\\7-Desarrollo de software orientada a objetos\\5-COLECCIONES\\TP ClubDeportivo\\TP ClubDeportivo.csproj",
       "packagesPath": "C:\\Users\\Marcelo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Marcelo\\Downloads\\7-Desarrollo de software orientada a objetos\\5-COLECCIONES\\TP ClubDeportivo\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Marcelo\\Downloads\\7-Desarrollo de software orientada a objetos\\5-COLECCIONES\\RompiendoCodigo\\semana5.csproj",
+      "projectName": "semana5",
+      "projectPath": "C:\\Users\\Marcelo\\Downloads\\7-Desarrollo de software orientada a objetos\\5-COLECCIONES\\RompiendoCodigo\\semana5.csproj",
+      "packagesPath": "C:\\Users\\Marcelo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Marcelo\\Downloads\\7-Desarrollo de software orientada a objetos\\5-COLECCIONES\\RompiendoCodigo\\obj\\",
+>>>>>>> 3c57aa93b44a4bd564a371f206560e56274214e7
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

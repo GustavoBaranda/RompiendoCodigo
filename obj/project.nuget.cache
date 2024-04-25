@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "NK4q6CEIINFFwzTGxHaLMOOI9QV9xlAhk3Npa3SsMLhCy0PMGz/VsI5KMNlFQtPXUmZZmZNup0WR4tQsqlBZBg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Marcelo\\Downloads\\7-Desarrollo de software orientada a objetos\\5-COLECCIONES\\TP ClubDeportivo\\TP ClubDeportivo.csproj",
+=======
+  "dgSpecHash": "SH64x893qfJCYh3B1DKPgUM7rHzN5qEDstn1lx0W4/k6FHJeurLfOlOb8MM0rDUdUtuwwgQgLmdU4H4Nd6/4zQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Marcelo\\Downloads\\7-Desarrollo de software orientada a objetos\\5-COLECCIONES\\RompiendoCodigo\\semana5.csproj",
+>>>>>>> 3c57aa93b44a4bd564a371f206560e56274214e7
   "expectedPackageFiles": [],
   "logs": []
 }
