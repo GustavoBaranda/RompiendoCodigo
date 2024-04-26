@@ -14,7 +14,7 @@ namespace TP_ClubDeportivo
 
         public Socio(string nombre)
         {
-            this.Nombre = nombre;
+            this.nombre = nombre;
         }
 
         public Socio(string nombre, int id)

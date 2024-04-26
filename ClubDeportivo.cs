@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace TP_ClubDeportivo
 {
@@ -40,20 +39,24 @@ namespace TP_ClubDeportivo
 
         public void altaSocio(string nombre)
         {
-
-            string resultado = $"El socio {nombre} ya existe!";
-            Socio socioNuevo;
-            socioNuevo = buscarSocio(nombre);
-            if (socioNuevo == null)
+            string resultado = "El campo nombre no puede estar vacio";
+            if (!string.IsNullOrWhiteSpace(nombre))
             {
-                siguienteId++;
-                socioNuevo = new Socio(nombre, siguienteId);
-                socios.Add(socioNuevo);
-                resultado = socioNuevo.ToString();
-
+                Socio socioNuevo;
+                socioNuevo = buscarSocio(nombre);
+                if (socioNuevo != null)
+                {
+                    resultado = $"El socio {nombre} ya existe!";
+                }
+                else
+                {
+                    siguienteId++;
+                    socioNuevo = new Socio(nombre.Trim(), siguienteId);
+                    socios.Add(socioNuevo);
+                    resultado = socioNuevo.ToString();
+                }
             }
             Console.WriteLine(resultado);
-
         }
 
         private Actividad buscarActividad(string nombreActividad)
@@ -67,14 +70,15 @@ namespace TP_ClubDeportivo
             return actividadBuscada;
         }
 
-        public bool altaActividad(string nombre, int cupo)
+        public bool altaActividad(string actividad, int cupo)
         {
             bool resultado = false;
+            if (string.IsNullOrWhiteSpace(actividad) || cupo <= 0) return resultado;
             Actividad actividadNueva;
-            actividadNueva = buscarActividad(nombre);
+            actividadNueva = buscarActividad(actividad);
             if (actividadNueva == null)
             {
-                actividadNueva = new Actividad(nombre, cupo);
+                actividadNueva = new Actividad(actividad, cupo);
                 actividades.Add(actividadNueva);
                 resultado = true;
             }
@@ -105,7 +109,7 @@ namespace TP_ClubDeportivo
             }
             if (socio.actividades.Exists(a => a.Nombre == actividad.Nombre))
             {
-                return $"YA SE ANOTO A {actividad.Nombre} EL CLIENTE";
+                return $"YA SE ANOTÓ A {actividad.Nombre} EL CLIENTE";
             }
             socio.inscribirActividad(actividad);
             socio.CantActividades += 1;

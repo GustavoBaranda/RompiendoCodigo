@@ -13,7 +13,7 @@ namespace TP_ClubDeportivo
             boca.altaActividad("Crossfix", 20);
             boca.altaActividad("Futbol", 10);
             boca.altaActividad("Basquet", 20);
-            boca.altaSocio("Juan");
+            boca.altaSocio("Jose");
             boca.altaSocio("Manuel");
             boca.altaSocio("Manuel");
             Console.WriteLine(boca.inscribirActividad("Futbol", 1));
