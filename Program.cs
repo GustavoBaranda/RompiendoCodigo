@@ -9,7 +9,7 @@ namespace semana5
             Console.ForegroundColor = ConsoleColor.Gray;    
             ClubDeportivo club = new ClubDeportivo();
             club.AltaSocio("Gustavo", "30123123");
-            club.AltaSocio("Eugenia", "22200000");
+            club.AltaSocio("Eugenia", "22363112");
             ActividadDeportiva futbol = new ActividadDeportiva("Futbol", 10);
             ActividadDeportiva voley = new ActividadDeportiva("Voley", 8);
             ActividadDeportiva tenis = new ActividadDeportiva("Tenis", 2);
@@ -18,10 +18,10 @@ namespace semana5
             club.AgregarActividad(voley);
             club.AgregarActividad(tenis);
             club.AgregarActividad(basquet);
-            club.InscribirActividad("Futbol", "1234");
-            club.InscribirActividad("Voley", "1234");
-            club.InscribirActividad("Tenis", "1234");
-            club.InscribirActividad("Tenis", "4321");
+            //club.InscribirActividad("Futbol", "1234"); Estas líneas no están haciendo nada...
+            //club.InscribirActividad("Voley", "1234");
+            //club.InscribirActividad("Tenis", "1234");
+            //club.InscribirActividad("Tenis", "4321");
             Console.Clear();
             
             // Ciclo principal para solicitar datos
@@ -90,9 +90,9 @@ namespace semana5
             Console.ForegroundColor = ConsoleColor.Green;  
             Console.Write("  Ingrese el nombre del socio: ");
             string nombreSocio = Console.ReadLine();
-            Console.Write("  Ingrese el ID del socio: ");
-            string idSocio = Console.ReadLine();
-            club.AltaSocio(nombreSocio, idSocio);
+            Console.Write("  Ingrese el DNI del socio: ");
+            string dniSocio = Console.ReadLine();
+            club.AltaSocio(nombreSocio, dniSocio);
         }
         static void AgregarNuevaActividad(ClubDeportivo club)
         {
@@ -128,9 +128,9 @@ namespace semana5
             Console.ForegroundColor = ConsoleColor.Green;  
             Console.Write("  Elija actividad deseada: ");
             string nombreAct = Console.ReadLine();
-            Console.Write("  Ingrese el ID del socio: ");
-            string idSoc = Console.ReadLine();
-            Console.WriteLine(club.InscribirActividad(nombreAct, idSoc));
+            Console.Write("  Ingrese el DNI del socio: ");
+            string dniSoc = Console.ReadLine();
+            Console.WriteLine(club.InscribirActividad(nombreAct, dniSoc));
         }  
     }
 }

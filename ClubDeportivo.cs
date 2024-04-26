@@ -42,12 +42,13 @@ namespace semana5
                 return;
             }
 
-            Socio nuevoSocio = new Socio(nombre, dniSocio);
+            int cantidad = socios.Count;
+            Socio nuevoSocio = new Socio(nombre, dniSocio, cantidad+1);
             socios.Add(nuevoSocio);
             Console.WriteLine("  Socio registrado correctamente.");
         }
 
-        public string InscribirActividad(string nombreActividad, string idSocio)
+        public string InscribirActividad(string nombreActividad, string dniSocio)
         {
             
             ActividadDeportiva actividad = actividades.Find(a => a.Nombre == nombreActividad);
@@ -61,7 +62,7 @@ namespace semana5
                 return "  CUPOS AGOTADOS PARA ESTA ACTIVIDAD";
             }
 
-            Socio socio = socios.Find(s => s.DniSocio == idSocio);
+            Socio socio = socios.Find(s => s.DniSocio == dniSocio);
             if (socio == null)
             {
                  return "  SOCIO INEXISTENTE";

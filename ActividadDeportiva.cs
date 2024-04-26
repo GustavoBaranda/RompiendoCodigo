@@ -32,6 +32,7 @@ namespace semana5
                 $"tiene {cuposDisponibles} cupos disponibles.";
             return mensaje;
         }
+
     }
 
 }
