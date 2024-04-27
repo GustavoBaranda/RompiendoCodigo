@@ -6,15 +6,11 @@ internal class ClubDeportivo
 {
     private List<Socio> socios;
     private List<ActividadDeportiva> actividades;
-
-    public object SocioOpcion { get; internal set; }
-
     public ClubDeportivo()
     {
         socios = new List<Socio>();
         actividades = new List<ActividadDeportiva>();
     }
-
     public void AgregarActividad(ActividadDeportiva actividad)
     {
         if (actividad == null)
@@ -36,7 +32,6 @@ internal class ClubDeportivo
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"  Actividad '{actividad.Nombre}' agregada correctamente.");
     }
-
     public void AltaSocio(string nombre, string dniSocio)
     {
         if (socios.Exists(s => s.DniSocio == dniSocio))
@@ -51,7 +46,6 @@ internal class ClubDeportivo
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("  Socio registrado correctamente.");
     }
-
     public string InscribirActividad(string nombreActividad, string idSocio)
     {
         
@@ -73,12 +67,12 @@ internal class ClubDeportivo
         {
             Console.ForegroundColor = ConsoleColor.Red;
             return "  SOCIO INEXISTENTE";
-        }
-        
-        if (socio.Actividades.Count >= 3)
+        }        
+
+        if (socio.Actividades.Exists(a => a.Nombre.ToLower() == nombreActividad.ToLower()))
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            return "  TOPE DE ACTIVIDADES ALCANZADO";
+            return "  EL SOCIO YA ESTÁ INSCRITO EN ESTA ACTIVIDAD";
         }
 
         socio.InscribirActividad(actividad);
@@ -86,7 +80,6 @@ internal class ClubDeportivo
         Console.ForegroundColor = ConsoleColor.Green;
         return "  INSCRIPCIÓN EXITOSA";
     }
-    
     public void MostrarCupos(string nombreActividad)
     {
         ActividadDeportiva actividad = actividades.Find(actividad => actividad.Nombre == nombreActividad);
@@ -106,8 +99,7 @@ internal class ClubDeportivo
             Console.WriteLine(actividad);
         }
     }
-
-        public void MostrarActividades()
+    public void MostrarActividades()
     {
         foreach(var actividad in actividades)
         {

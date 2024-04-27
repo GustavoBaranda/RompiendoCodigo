@@ -23,6 +23,15 @@ namespace semana5
             club.InscribirActividad("Tenis", "30123123");
             club.InscribirActividad("Tenis", "22200000");
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;   
+            Console.WriteLine("\n\n\n +---- El proyecto fue creado por el grupo nro. 5 ---+");
+            Console.WriteLine(" |                Marcelo Galimberti                 |");
+            Console.WriteLine(" |                 Catriel Escobar                   |");
+            Console.WriteLine(" |                 M. Eugenia Bava                   |");
+            Console.WriteLine(" |                 Alejandro Abadi                   |");
+            Console.WriteLine(" |                 Gustavo Baranda                   |");
+               Console.WriteLine(" +---------------------------------------------------+");
+            
             
             // Ciclo principal para solicitar datos
             bool continuar = true;
@@ -202,7 +211,6 @@ namespace semana5
             }
             Console.WriteLine(club.InscribirActividad(nombreAct, idSoc));
         }
-
         static void MostrarListaDeSocios(ClubDeportivo club)
         {
             Console.Clear();
@@ -213,7 +221,6 @@ namespace semana5
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(" +---------------------------------------------------+");
         }
-
         static void MostrarMensajeOpcionInvalida()
         {
             Console.Clear();
