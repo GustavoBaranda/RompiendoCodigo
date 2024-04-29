@@ -9,7 +9,7 @@ namespace semana5
             Console.ForegroundColor = ConsoleColor.Gray;    
             ClubDeportivo club = new ClubDeportivo();
             club.AltaSocio("Gustavo", "30123123");
-            club.AltaSocio("Eugenia", "22363112");
+            club.AltaSocio("Eugenia", "22200000");
             ActividadDeportiva futbol = new ActividadDeportiva("Futbol", 10);
             ActividadDeportiva voley = new ActividadDeportiva("Voley", 8);
             ActividadDeportiva tenis = new ActividadDeportiva("Tenis", 2);
@@ -231,3 +231,4 @@ namespace semana5
         }  
     }
 }
+

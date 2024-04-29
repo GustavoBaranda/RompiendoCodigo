@@ -70,8 +70,6 @@ C:\Users\Gustavo\Desktop\Poo7\RompiendoCodigo\obj\Debug\netcoreapp3.1\semana5.so
 C:\Users\Gustavo\Desktop\Poo7\RompiendoCodigo\obj\Debug\netcoreapp3.1\semana5.dll
 C:\Users\Gustavo\Desktop\Poo7\RompiendoCodigo\obj\Debug\netcoreapp3.1\semana5.pdb
 C:\Users\Gustavo\Desktop\Poo7\RompiendoCodigo\obj\Debug\netcoreapp3.1\semana5.genruntimeconfig.cache
-<<<<<<< HEAD
-=======
 C:\Users\Maria Eugenia\Desktop\Probando\RompiendoCodigo\bin\Debug\netcoreapp3.1\semana5.exe
 C:\Users\Maria Eugenia\Desktop\Probando\RompiendoCodigo\bin\Debug\netcoreapp3.1\semana5.deps.json
 C:\Users\Maria Eugenia\Desktop\Probando\RompiendoCodigo\bin\Debug\netcoreapp3.1\semana5.runtimeconfig.json

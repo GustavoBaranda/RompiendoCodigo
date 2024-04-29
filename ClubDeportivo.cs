@@ -41,20 +41,20 @@ internal class ClubDeportivo
             return;
         }
 
-            int nroSocio = socios.Count;
-            Socio nuevoSocio = new Socio(nombre, dniSocio, nroSocio++);
-            socios.Add(nuevoSocio);
-            Console.WriteLine("  Socio registrado correctamente.");
-        }
+        int nroSocio = socios.Count;
+        Socio nuevoSocio = new Socio(nombre, dniSocio, ++nroSocio);
+        socios.Add(nuevoSocio);
+        Console.WriteLine("  Socio registrado correctamente.");
+    }
+    public string InscribirActividad(string nombreActividad, string idSocio)
+    {
 
-        public string InscribirActividad(string nombreActividad, string dniSocio)
+        ActividadDeportiva actividad = actividades.Find(a => a.Nombre.ToLower() == nombreActividad.ToLower());
+        if (actividad == null)
         {
-            
-            ActividadDeportiva actividad = actividades.Find(a => a.Nombre == nombreActividad);
-            if (actividad == null)
-            {
-                return "  ACTIVIDAD INEXISTENTE";
-            }
+            Console.ForegroundColor = ConsoleColor.Red;
+            return "  ACTIVIDAD INEXISTENTE";
+        }
 
         if (actividad.CuposDisponibles <= 0)
         {
@@ -62,16 +62,18 @@ internal class ClubDeportivo
             return "  CUPOS AGOTADOS PARA ESTA ACTIVIDAD";
         }
 
-            Socio socio = socios.Find(s => s.DniSocio == dniSocio);
-            if (socio == null)
-            {
-                 return "  SOCIO INEXISTENTE";
-            }
-            
-            if (socio.Actividades.Count >= 3)
-            {
-                return "  TOPE DE ACTIVIDADES ALCANZADO";
-            }
+        Socio socio = socios.Find(s => s.DniSocio == idSocio);
+        if (socio == null)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            return "  SOCIO INEXISTENTE";
+        }
+
+        if (socio.Actividades.Exists(a => a.Nombre.ToLower() == nombreActividad.ToLower()))
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            return "  EL SOCIO YA ESTÁ INSCRITO EN ESTA ACTIVIDAD";
+        }
 
         socio.InscribirActividad(actividad);
         actividad.DecrementarCupo();
@@ -81,32 +83,33 @@ internal class ClubDeportivo
     public void MostrarCupos(string nombreActividad)
     {
         ActividadDeportiva actividad = actividades.Find(actividad => actividad.Nombre == nombreActividad);
-        if(actividad == null)
+        if (actividad == null)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("  NO EXISTE UNA ACTIVIDAD CON ESE NOMBRE");
-        } else
+        }
+        else
         {
             Console.WriteLine(actividad);
         }
     }
     public void MostrarCupos()
     {
-        foreach(var actividad in actividades)
+        foreach (var actividad in actividades)
         {
             Console.WriteLine(actividad);
         }
     }
     public void MostrarActividades()
     {
-        foreach(var actividad in actividades)
+        foreach (var actividad in actividades)
         {
-            Console.Write(new string(' ', 2)+ actividad.Nombre);
+            Console.Write(new string(' ', 2) + actividad.Nombre);
         }
     }
     public void ListarSocios()
     {
-        foreach (var nuevoSocio in socios)            
+        foreach (var nuevoSocio in socios)
             Console.WriteLine(nuevoSocio);
     }
 }
