@@ -41,20 +41,20 @@ internal class ClubDeportivo
             return;
         }
 
-        Socio nuevoSocio = new Socio(nombre, dniSocio);
-        socios.Add(nuevoSocio);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("  Socio registrado correctamente.");
-    }
-    public string InscribirActividad(string nombreActividad, string idSocio)
-    {
-        
-        ActividadDeportiva actividad = actividades.Find(a => a.Nombre.ToLower() == nombreActividad.ToLower());
-        if (actividad == null)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            return "  ACTIVIDAD INEXISTENTE";
+            int nroSocio = socios.Count;
+            Socio nuevoSocio = new Socio(nombre, dniSocio, nroSocio++);
+            socios.Add(nuevoSocio);
+            Console.WriteLine("  Socio registrado correctamente.");
         }
+
+        public string InscribirActividad(string nombreActividad, string dniSocio)
+        {
+            
+            ActividadDeportiva actividad = actividades.Find(a => a.Nombre == nombreActividad);
+            if (actividad == null)
+            {
+                return "  ACTIVIDAD INEXISTENTE";
+            }
 
         if (actividad.CuposDisponibles <= 0)
         {
@@ -62,18 +62,16 @@ internal class ClubDeportivo
             return "  CUPOS AGOTADOS PARA ESTA ACTIVIDAD";
         }
 
-        Socio socio = socios.Find(s => s.DniSocio == idSocio);
-        if (socio == null)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            return "  SOCIO INEXISTENTE";
-        }        
-
-        if (socio.Actividades.Exists(a => a.Nombre.ToLower() == nombreActividad.ToLower()))
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            return "  EL SOCIO YA ESTÁ INSCRITO EN ESTA ACTIVIDAD";
-        }
+            Socio socio = socios.Find(s => s.DniSocio == dniSocio);
+            if (socio == null)
+            {
+                 return "  SOCIO INEXISTENTE";
+            }
+            
+            if (socio.Actividades.Count >= 3)
+            {
+                return "  TOPE DE ACTIVIDADES ALCANZADO";
+            }
 
         socio.InscribirActividad(actividad);
         actividad.DecrementarCupo();
