@@ -42,8 +42,8 @@ namespace semana5
                 return;
             }
 
-            int cantidad = socios.Count;
-            Socio nuevoSocio = new Socio(nombre, dniSocio, cantidad+1);
+            int nroSocio = socios.Count;
+            Socio nuevoSocio = new Socio(nombre, dniSocio, nroSocio++);
             socios.Add(nuevoSocio);
             Console.WriteLine("  Socio registrado correctamente.");
         }
